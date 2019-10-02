@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage{import}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[a5paper]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\title{MATH1510 Additional Notes}
+\author{}
+\date{}
+
+\setlength\parindent{0em}
+\setlength\parskip{1em}
+
+\begin{document}
+
+\section{Coursework 3}
+
+\subsubsection{Problem 2}
+
+$$
+f(x) = \begin{cases}
+  \frac{x^2-4}{x-2} & \text{if } x \not = 2\\
+  4 & \text{if } x = 2
+\end{cases},\ 
+g(x) = \begin{cases}
+  x & \text{if } x < 4\\
+  x^2 - 3x & \text{if } x \geq 4
+\end{cases}
+$$
+
+Show that $g(f(x))$ is continuous at $x = 0$.
+
+Two approaches to the problem:
+
+\begin{enumerate}
+  \item Find some theorem saying that if $f(x)$ is continuous somewhere and $g(x)$ is continuous somewhere, then $g(f(x))$ is continuous.
+  \item Start with scratch: simplify $g(f(x))$.
+\end{enumerate}
+
+\subsection{Problem 4}
+
+Given that $$f(x + y) = f(x)f(y)$$, show $f'(x)$ exists if $f'(0)$ exists.
+
+Difference quotient\\
+$ = \frac{f(x + h) - f(x)}{h} (h \not = 0) $\\
+$ = \frac{f(x)f(h) - f(x)}{h} $\\
+$ = f(x) \cdot \frac{f(h) - 1}{h} $
+
+Given that $f'(0)$ exists, we know that $lim_{h \to 0} \frac{f(h) - f(0)}{h}$ is defined.
+
+We notice that $\frac{f(h) - f(0)}{h}$ does not look the same as $\frac{f(h) - 1}{h}$. Hence we want to prove that $f(0) = 1$.
+
+\end{document}

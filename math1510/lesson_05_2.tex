@@ -1,0 +1,82 @@
+\section{Some Applications of Lagrange's Mean Value Theorem}
+
+\subsection{Strictly Increasing Functions}
+
+\textbf{Assumption:} $f'(x) > 0$ for all $x$ in $[a, b]$.
+
+\textbf{Conclusion:} $f(x)$ is strictly increasing in $(a, b)$.
+
+\textbf{Proof:} Let $x_1 < x_2$, where $x_1$ and $x_2$ are two real numbers.
+
+Applying the Lagrange's Mean Value Theorem, we have
+
+$$ \frac{f(x_2) - f(x_1)}{x_2 - x_1} = f'(\xi) $$
+
+where $x_1 < \xi < x_2$.
+
+However, we have $f'(\xi) > 0$ for all $\xi$. Also we have $x_2 - x_1 > 0$. Therefore we conclude that $f(x_2) - f(x_1) > 0$ and hence $f(x_2) > f(x_1)$.
+
+\subsection{Linear Function}
+
+\textbf{Assumption:} $f'(x)$ exists for any real number $x$ and $f'(x)$ is a constant.
+
+\textbf{Conclusion:} $f(x) = ax + b$ for some real numbers $a$ and $b$.
+
+\textbf{Proof:} (Tips: using Lagrange's Mean Value Theorem)
+
+\subsection{L'Hopital Rule}
+
+\textbf{Assumption:} $f(x)$ and $g(x)$ are continuous functions on an interval containing $x = a$, with $f(a) = g(a) = 0$.\\
+Also $f$ and $g$ are differentiable, and that $f'$ and $g'$ are continuous.\\
+Also $g'(a) \not = 0$.
+
+\textbf{Proof:}
+
+Consider $\frac{f(x) - 0}{g(x) - 0}$. This is same as $\frac{f(x) - f(a)}{g(x) - g(a)}$. ($f(a) = g(a) = 0$)
+
+We can then apply Cauchy's Mean Value Theorem. This means that $\frac{f(x) - f(a)}{g(x) - g(a)} = \frac{f'(\xi)}{g'(\xi)}$, where $\xi$ is between $x$ and $a$.
+
+Then we take the limit as $x \to a$. We have
+
+$$ \lim_{x \to a} \frac{f(x)}{g(x)} = \lim_{x \to a} \frac{f'(\xi)}{g'(\xi)} = \frac{f'(a)}{g'(a)} $$
+
+\textbf{Note:} the original limit must be in the form of $\pm3.\frac{\infty}{\infty}$ or $\frac{0}{0}$
+
+\textbf{Remarks:}
+
+\begin{enumerate}
+  \item We can use L'Hopital rule to help us find limits like $\lim_{x \to 0^{+}} x^x$.
+  \item Let $f_n(x) = x^{x^{\dots^x}}$, where there are $n$ $x$s. (e.g. $f_2(x) = x^x$)\\
+  We cannot easily find the minimum or maximum point of $f_n(x)$ for $n \geq 3$.
+\end{enumerate}
+
+\subsection{Taylor's Theorem}
+
+Recall that when $n = 0$, Taylor's Theorem is
+
+$$ f(x) = f(a) + \frac{f^{(0 + 1)}(\xi)}{(0 + 1)!} (x - a)^{(0 + 1)} $$
+
+which is $$ f(x) = f(a) + f'(\xi)(x - a) $$, a rearrangement of Lagrange's Mean Value Theorem $$ \frac{f(x) - f(a)}{x - a} = f'(\xi) $$
+
+For $n = 1$, we have
+
+$$ f(x) = f(a) + f'(a) \cdot (x - a) + \frac{f''(\xi)}{2!} (x - a)^2 $$
+
+, where the last term is the error term.
+
+We intend to prove Taylor Theorem for the case of $n = 1$. We can rearrange the theorem to become
+
+$$ f(x) - f(a) - f'(a)(x - a) = \frac{f''(\xi)}{2!} (x - a)^2 $$
+
+We can reconsider the case $n = 0$, where we have $ f(x) - f(a) = f'(\xi)(x - a) $. Similarly, we can try to rearrange the terms and obtain
+
+$$ \frac{f(x) - f(a) - f'(a)(x - a)}{(x - a)^2} = \frac{f''(\xi)}{2!} $$
+
+Let $A(x) = f(x) - f(a) - f'(a)(x - a)$ and $B(x) = (x - a)^2$. We notice that $A(a) = 0$ and $B(a) = 0$. Hence the left hand side is equivalent to $ \frac{A(x) - A(a)}{B(x) - B(a)}$. Also
+
+$$ \frac{d}{dx} (f(x) - f(a) - f'(a)(x - a))|_{x=\xi} = f'(\xi) - f'(a) $$
+$$ \frac{d}{dx} (x - a)^2|_{x=\xi} = 2(x - a)|_{x = \xi} = 2(\xi - a) $$
+
+Hence
+
+$$ \frac{f(x) - f(a) - f'(a)(x - a)}{(x - a)^2} = \frac{1}{2} (\frac{f'(\xi) - f'(a)}{\xi - a}) = \frac{1}{2} \frac{df'(\xi)}{d\xi}|_{x = \alpha} = \frac{f''(\alpha)}{2} $$

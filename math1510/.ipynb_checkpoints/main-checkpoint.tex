@@ -17,60 +17,11 @@
 
 \import{./}{_title.tex}
 
+\tableofcontents
+
 \import{./}{lesson_04_2.tex}
 \import{./}{lesson_05_1.tex}
-
-\section{Proof of Rolle's Theorem}
-
-\subsection{Rolle's Theorem}
-
-For $f(x)$ continuous on $[a, b]$ and differentiable in $(a, b)$, and $f(a) = f(b)$, there must exist at least one $\xi$ in $(a, b)$ that $f'(\xi) = 0$.
-
-\subsection{Fermat's Lemma}
-
-To prove Rolle's Theorem, we will use Fermat's Lemma.
-
-\begin{quote}
-    If $c \in (a, b)$ is a local maximum or minimum point and $f'(x)$ exists, then $f'(c) = 0$.
-    
-    A point $(c, f(c))$ is local maximum (minimum) if it is the maximum (minimum) in the interval $(c - h, c + h)$ for some $h > 0$.
-\end{quote}
-
-\textbf{Proof of Fermat's Lemma.}
-Consider $\frac{f(c + h) - f(c)}{h}$, where $c$ is a local maximum. Consider the left limit and right limit separately.
-
-Note that the numerator is always $\leq 0$ as $c$ is a local maximum.
-
-For the left limit, $h < 0$. Hence we have $\frac{f(c + h) - f(c)}{h} \geq 0$.\\
-For the right limit, $h > 0$. Hence we have $\frac{f(c + h) - f(c)}{h} \leq 0$.
-
-Then, $$ 0 \leq \frac{f(c + h) - f(c)}{h} \leq 0 $$
-$$ 0 \leq \lim_{h \to 0} \frac{f(c + h) - f(c)}{h} \leq 0 $$
-$$ 0 \leq f'(x) \leq 0 $$
-$$ f'(x) = 0 $$
-
-\subsection{Proof of Rolle's Theorem}
-
-Now that we have proved Fermat's Lemma, we can prove Rolle's Theorem with the help of Extreme Value Theorem.
-
-\begin{quote}
-    Extreme Value Theorem states that for $f: [a, b] \to \mathbb{R}$ continuous on $[a, b]$, there must be a global minimum $x_m$ and global maximum $x_M$, such that $f(x_m) \leq f(x) \leq f(x_M)$ for all $x$ in $[a, b]$.
-    
-    \textbf{Note on $[a, b]$.} The interval is $[a, b]$ instead of $(a, b)$. Consider $\tan x$, which is continuous on $(-\frac{\pi}{2}, \frac{\pi}{2})$ but not on $[-\frac{\pi}{2}, \frac{\pi}{2}]$.\\
-    It has neither global minimum nor global maximum. (The range of $\tan x$ in $[-\frac{\pi}{2}, \frac{\pi}{2}]$ is $(-\infty, \infty)$.)
-\end{quote}
-
-Then there are two cases for $f(x)$.
-
-\textbf{Case 1: at least one of $x_m$ or $x_M$ lies in $(a, b)$.}
-By Fermat's Lemma, the minimum or maximum that lies in $(a, b)$ satisfies $f'(x) = 0$.
-
-\textbf{Case 2: both of $x_m$ and $x_M$ lies on the boundary, i.e. $\{x_m, x_M\} = \{a, b\}$.}
-As $f(x_m) \leq f(x) \leq f(x_M)$, and $f(a) = f(b)$, we have
-$$ f(a) = f(b) = f(x_m) = f(x_M) = f(x) \text{ for all } x $$
-
-Which means that for all $x \in (a, b)$, $f'(x) = 0$.
-
-Therefore we have proved Rolle's Theorem for both cases.
+\import{./}{lesson_05_2.tex}
+\import{./}{misc.tex}
 
 \end{document}
