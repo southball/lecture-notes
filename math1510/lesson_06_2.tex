@@ -1,0 +1,87 @@
+\section{Taylor Theorem Continued}
+
+\subsection{$n = 3$ case of Taylor's Theorem}
+
+Consider $f(x) = f(c) + \frac{f'(c)}{1!}(x-c)^1 + \frac{f''(c)}{2!}(x-c)^2 + \frac{f^{(3)}(\xi)}{3!}(x-c)^3$.
+
+By rearranging the terms, we have
+
+$$ \frac{f(x) - f(c) - \frac{f'(c)}{1!}(x-c) - \frac{f''(c)}{2!}(x-c)^2}{(x-c)^3} = \frac{f^{3}(\xi)}{3!} $$
+
+Let $F(x) = \text{numerator} = f(x) - f(c) - \frac{f'(c)}{1!}(x - c) - \frac{f''(c)}{2!}(x - c)^2$, and $G(x) = (x - c)^3$. Hence we have $F(c) = 0$ and $G(c) = 0$. Hence we have
+
+$$ \frac{F(x) - F(c)}{G(x) - G(c)}= \frac{f^{3}(\xi)}{3!} $$
+
+$F'(\xi) = f'(\xi) - f'(c) - 2 \cdot \frac{f''(c)}{2!} (\xi - c) = f'(\xi) - f'(c) - f''(c) (\xi - c)$\\
+$G'(\xi) = 3 (\xi - c)^2 $
+
+Hence $$ \frac{f(x) - f(c) - f'(c)(x - c) - \frac{f''(c)}{2} (x - c)^2}{(x - c)^3} = \frac{f'(\xi) - f'(c) - f''(c)(\xi - c)}{3(\xi - c)^2} $$
+
+We can apply Cauchy's Mean Value Theorem once more and obtain
+
+$$ \frac{f'(\xi) - f'(c) - f''(c)(\xi - c)}{3(\xi - c)^2} = \frac{f''(\eta) - f''(c)}{6(\eta - c)} $$
+
+Then we can apply Lagrange's Mean Value Theorem and obtain
+
+$$ \frac{f''(\eta) - f''(c)}{6(\eta - c)} = \frac{1}{6}f^{(3)}(\delta) = \frac{f^{(3)}(\delta)}{3!}$$ for some $\delta$ between $x$ and $c$.
+
+\subsection{Some terminologies related to Taylor's Theorem}
+
+Terms:
+\begin{enumerate}
+  \item Taylor's Theorem
+  \item Taylor Polynomial
+  \item Taylor Series
+  \item MacLaurin Series
+  \item Center
+\end{enumerate}
+
+\textbf{Taylor's Theorem:}\begin{equation*}
+\begin{split}
+f(x) = f(c) + f'(c)(x-c) + \frac{f''(c)}{2!}(x-c)^2 + \dots + \frac{f^{(n)}(c)}{n!}(x-c)^n \\+ \frac{f^{(n+1)}(\xi)}{(n+1)!}(x-c)^{(n+1)}
+\end{split}
+\end{equation*}
+
+\textbf{Assumptions:} $f$ has $n + 1$ derivatives for an open interval containing $c$.
+
+\textbf{Remark:} the point $c$ is special. If we substitute $x = c$ on the right hand side, all terms except $f(c)$ vanish. Hence $f(x) = f(c)$ and it is named \textbf{center}.
+
+The polynomial is a good approximation of $f(x)$ near the center $c$. It's called \textbf{Taylor polynomial of degree $n$}. \textbf{It does not contain the error term.}
+
+\textbf{MacLaurin polynomial:} Taylor polynomial centered at $x = 0$
+
+\textbf{MacLaurin series:} Taylor series centered at $x = 0$
+
+\subsection{Examples}
+
+\subsubsection{Exponential Function}
+
+Find Taylor Polynomial of degree 1, 2 and 3 centered at $x = 0$, for the function $f(x) = e^x$.
+
+$TP(1) = f(0) + \frac{f'(0)}{1!}(x - 0)^1 = e^0 + \frac{e^{0}}{1!}x = 1 + x$\\
+$TP(2) = f(0) + \frac{f'(0)}{1!}(x - 0)^1 + \frac{f'(0)}{2!}(x - 0)^2 = e^0 + \frac{e^{0}}{1!}x + \frac{e^{0}}{2!}x^2 = 1 + x + \frac{x^2}{2!}$\\
+$TP(3) = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!}$
+
+\subsection{Taylor Series}
+
+\textbf{Question:} if $f(x)$ has all derivatives in an open interval containing the center $C$, is it true that
+
+$$ f(x) = \sum_{i=0}^{\infty} \frac{f^{(i)}(c)}{i!}(x - c)^i $$
+
+(without error term)? \textrightarrow No! (Not always)
+
+If a function can be written as a Taylor polynomial with no error term, then the function is a Taylor series.
+
+\textbf{Examples:}
+
+$$ e^x = 1 + x + \frac{x^2}{2!} + \dots $$
+$$ \sin x = x - \frac{x^3}{3!} + \frac{x^5}{5!} + \dots $$
+$$ \cos x = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} + \dots $$
+
+\textbf{Examples of not Taylor Series:}
+
+All 3 converge for only $-1 < x < 1$:
+
+$$ \ln(1 + x) = 1 - x + \frac{x^2}{2} - \frac{x^3}{3} + \dots $$
+$$ \frac{1}{1 - x} = 1 + x + x^2 + x^3 + \dots $$
+$$ \sqrt{1 + x} = 1 + \frac{1}{2}x - \frac{1}{8}x^2 + \dots $$
