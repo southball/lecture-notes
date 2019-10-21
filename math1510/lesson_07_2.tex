@@ -1,0 +1,84 @@
+\subsection{Another Problem Involving Taylor Series}
+
+Find $n$ such that Taylor polynomial of degree $n$ of $\sin x$ estimates $\sin 1$ with error $< 0.01$.
+
+\textbf{Solution:} Let $f(x) = \sin x$ and choose $c = 0$. We have
+
+$$ f^{(n)}(0) = \begin{cases}
+  0 & , n \equiv 0 \pmod{4}\\
+  1 & , n \equiv 1 \pmod{4}\\
+  0 & , n \equiv 2 \pmod{4}\\
+  -1 & , n \equiv 3 \pmod{4}
+\end{cases} $$
+
+Then we can solve the error term $< 0.01$, i.e. $$ \frac{f^{(n+1)}(0)}{(n + 1)!} < 0.01 $$
+
+We have $ -1 \leq f^{(n+1)}(0) \leq 1 $. Hence we can solve the looser condition $ |\frac{1}{(n+1)!}| < 0.01 $ instead.
+
+\subsection{Two Interesting Problems}
+
+\begin{enumerate}
+  \item $\ln (1+x)$: use this function to find $\ln (1.5)$ with error $\text{error} < 0.01$.
+  \item $\sqrt{1+x}$: use this function to find $\sqrt{1.5}$ with $\text{error} < 0.01$. (Note: use Taylor's Theorem, not Newton's generalized binomial theorem, $-1 < x < 1$)
+\end{enumerate}
+
+\textbf{Problem 1:} let $f(x) = \ln(1 + x)$, $c = 0$.
+
+$$ f(0) = \ln 1 = 0 $$
+$$ f'(0) = 1 $$
+$$ f''(0) = -1 $$
+$$ f(x) = x - \frac{x^2}{2} + \frac{x^3}{3} + \dots + (-1)^{n+1} \frac{x^n}{n} + \frac{f^{(n+1)}(\xi)}{(n+1)!} x^{n+1} $$
+$$ f(x) = \sum_{k=1}^\infty \frac{(-1)^{k+1}}{k} x^k $$
+
+The domain of the Taylor series (radius of convergence) is $ (-1, +1) $.
+
+\subsection{An Example about Integration}
+
+\textbf{Question:} find $\int_0^1 e^{x^2} dx$ with error $< 0.01$.
+
+\textbf{Note:} $\int e^{x^2}$ and $\int e^{-x^2}$ has no closed form solution.
+
+\textbf{Solution:} to approximate $ \int_0^1 e^{x^2} dx $, we can use Taylor's Theorem (and control the error term):
+
+\textbf{Wrong idea:} use Taylor series and let $f(x) = e^{x^2}$. The expansion of the Taylor polynomial is extremely complicated.
+
+\textbf{Correct idea (not necessarily the most accurate):}
+
+$$ \int_0^1 e^{x^2} dx = \int_0^1 (\sum_{k=0}^n \frac{x^{2k}}{k!}) dx + \int_0^1 \frac{e^\xi}{(n+1)!} x^{2n+2} dx $$
+
+We want the error term to be $< 0.01$, i.e. $ \int_{0}^1 \frac{e^\xi}{(n+1)!} x^{2n+2} dx < 0.01 $
+
+We have $ \xi \in [0, 1] \implies e^\xi \in [1, e] $ and $ x \in [0, 1] \implies x^{2n+2} \in [0, 1] $. Hence the error term $ \int_{0}^1 \frac{e^\xi}{(n+1)!} x^{2n+2} dx < \int_0^1 \frac{e}{(n+1)!} dx < \frac{e}{(n+1)!} $.
+
+\subsection{Summary}
+
+\begin{itemize}
+  \item Example of Taylor Series / Theorem: $\sin 1, \ln (1 + x), \sqrt{1 + x}, \int_0^1 e^{x^2} dx$
+  \item Mentioned the domain of the Taylor Polynomial may not be the same as the left hand side
+  \item $+, -, \times, \div, \circ \text{(composition)}$ of taylor series
+\end{itemize}
+
+\subsection{Power series of $ \frac{\sin x}{1 - x} $}
+
+\textbf{Question:} We want to find the power series of $ \frac{\sin x}{1 - x} $.
+
+\textbf{Notes:} 
+
+\begin{equation*}
+\begin{split}
+\frac{\sin x}{1 - x} = 
+  (x - \frac{x^3}{3!} + \frac{x^5}{5!} + \dots + (-1)^{2n+1} \cdot \frac{x^{2n+1}}{(2n+1)!} + \dots) \\ 
+  \cdot (1 + x + x^2 + \dots + x^n + \dots)
+\end{split}
+\end{equation*}
+
+By collecting terms, we have
+
+\begin{equation*}
+\begin{split}
+\sin x 
+& = x + x^2 + \frac{5}{6} x^3 + \dots\\
+& = (\sum_{k=0}^\infty \frac{(-1)^k}{(2k+1)!} x^{2k+1}) \cdot (\sum_{k=0}^\infty x^k)\\
+& = \sum_{k=0}^\infty (\sum_{l=0}^k (\dots)) x^k
+\end{split}
+\end{equation*}
