@@ -1,0 +1,208 @@
+\subsection{Phase Plane}
+
+Reference: \href{https://aeb019.hosted.uark.edu/pplane.html}{Phase Plane Plotter}
+
+The following set of equation is a pendulum motion:
+\begin{equation*}
+\begin{split}
+x' &= y\\
+y' &= \sin x
+\end{split}
+\end{equation*}
+
+For our context, we want to solve a general differential equation like $$ \frac{dy}{dx} = x $$
+
+We can let $t = x$, then
+$$ \frac{dx}{dt} = \frac{dx}{dx} = 1 $$
+$$ \frac{dy}{dt} = \frac{dy}{dx} = x $$
+
+If we try to solve the pendulum equation, we have
+
+$$ \frac{\frac{dy}{dt}}{\frac{dx}{dt}} = \frac{\sin x}{y} $$
+$$ \frac{dy}{dx} = \frac{\sin x}{y} $$
+
+which leads us to nothing. We can try
+
+$$ \frac{dy}{dt} = \frac{d(\frac{dx}{dt})}{dt} = \sin x $$
+
+which is
+
+$$ \frac{d^2x}{dt^2} = \sin x $$
+
+the basic pendulum equation.
+
+Interestingly, we can see the phase plane diagram and notice that only for small angles the pendulum have a period.
+
+Also, only for very simple functions (generally those mentioned in DSE syllabus), obtained from integration, the phase diagram has no intersection points.
+
+\subsection{More on Indefinite Integral}
+
+Indefinite integral $\int f(x) dx$ are solutions of the differential equation $$ \frac{dF(x)}{dx} = f(x) $$
+and the solution curves of $y = F(x)$ do not intersect.
+
+\subsubsection{Prove for nonexistence of intersection}
+
+\textbf{Claim:} let $y = F_1(x), y = F_2(x)$ be two solutions of the differential equation $\frac{dF(x)}{dx} = f(x)$. Then they differ only by a constant.
+
+\textbf{Proof:} consider the difference $F_2(x) - F_1(x)$. Then we have
+
+$$ \frac{d}{dx}(F_2(x) - F_1(x)) = f(x) - f(x) = 0 $$
+
+As $ \frac{d}{dx}(F_1(x) - F_2(x)) = 0 $ in some interval $[a, b]$, we have $F_1(x) - F_2(x) \equiv C$.
+
+\begin{quote}
+    \textbf{Proof:} Let $G(x) = F_1(x) - F_2(x)$. We have
+    
+    $$ \frac{G(b) - G(a)}{b - a} = G'(\xi) $$ for some $\xi$ and all $a, b$.
+    
+    However, $G'(\xi) = 0$ for any $\xi$.
+    
+    Then we have
+    
+    $$ \frac{G(b) - G(a)}{b - a} = 0 \implies G(b) - G(a) = 0 \implies G(a) = G(b) $$
+    
+    for all $a, b$.
+    
+    Therefore, $G(x) \equiv C$.
+\end{quote}
+
+\begin{quote}
+    \textbf{Proof by contradiction:} suppose $G(x) \not\equiv C$. Then there exists two points $x_1, x_2$ in the domain such that $$ G(x_1) \not = G(x_2) $$
+
+    By Lagrange Mean Value Theorem, there exists at least one $\xi$ such that
+    
+    $$ 0 \not = \frac{G(x_1) - G(x_2)}{x_1 - x_2} = G'(\xi) $$
+    
+    i.e. there exists at least one $\xi$ such that $G'(\xi) \not = 0$. However $G'(\xi) = 0$ as proved, and there is a contradiction.
+    
+    Hence $G(x) \equiv C$.
+    
+\end{quote}
+
+\subsubsection{Existence of Solutions}
+
+Next, we study whether the equation $\frac{dF(x)}{dx} = f(x)$ has solution, where $x$ is in $[a, b]$.
+
+\textbf{Assumptions needed:}
+
+\begin{enumerate}
+    \item $f(x)$ is a continuous function.
+    \item $[a, b]$ is a closed interval.
+\end{enumerate}
+
+With these assumptions, we also know that $F(x)$ is differentiable \textbf{in $(a, b)$}. ($f(x)$, the derivative, is continuous), i.e. $F(x)$ is smoother than $f(x)$.
+
+\begin{quote}
+For example, what is $\int |x| dx$?
+
+\textbf{Answer:} let $F(x)$ be the solution.
+
+$ F(x) = \frac{x^2}{2} + C $ for $x \geq 0$ and
+$ F(x) = -\frac{x^2}{2} + C $ for $x < 0$.
+
+$$
+    F(x) = \int |x| dx + C = 
+        \begin{cases}
+            \frac{x^2}{2} + C_1 & (x \geq 0)\\
+            -\frac{x^2}{2} + C_2 & (x < 0)
+        \end{cases}
+$$
+
+Also this function is continuous for each $x$. So we have $C_1 = C_2 = C$ for some $C$.
+\end{quote}
+
+\subsection{Some Facts about Integration}
+
+\begin{enumerate}
+    \item $\int (f(x) \pm g(x)) dx = \int f(x) dx \pm \int g(x) dx$
+    \item $\int kf(x) dx = k \int f(x) dx$
+\end{enumerate}
+
+The first two properties are called ``linearity''. (Related to the existence of only first derivatives in differential equation.)
+
+\subsection{Analog of Product, Quotient and Chain Rule}
+
+\textbf{Question:} for differentiation, we have product, quotient, chain rules. How about integration?
+
+\textbf{Answer:}
+
+\textbf{Chain rule $\approx$ method of substitution.}
+
+For example, evaluate $ \int \cos 2x dx $.\\
+Let $u = 2x$. Then $dx = \frac{1}{2}du$.\\
+$ \int \cos 2x dx = \int \cos u \frac{du}{2} = \frac{1}{2} \sin u + C = \frac{1}{2} \sin 2x + C$.
+
+\textbf{Product rule $\approx$ integration by part.}
+
+Let $u(x), v(x)$ be two differentiable functions. Then
+
+\begin{equation*}
+\begin{split}
+&d(u(x)v(x))\\
+&= (v(x)\frac{du(x)}{dx} + u(x)\frac{dv(x)}{dx}) \cdot dx\\ 
+&= v(x)du(x) + u(x)dv(x)
+\end{split}
+\end{equation*}
+
+$$ d(uv) = vdu + udv $$
+$$ \int d(uv) = \int vdu + \int udv $$
+$$ \int udv = - \int vdu + \int 1 d(uv) = - \int vdu + uv $$
+
+\subsection{Examples of Integration}
+
+We have some commonly used results like
+
+\begin{itemize}
+    \item $\int x^n dx = \frac{x^{n+1}}{n+1} + C$
+    \item $\int \cos x dx = \sin x + C$
+    \item $\int \sin x dx = -\cos x + C$
+    \item $\int e^x dx = e^x + C$
+    \item $\int x^{-1} dx = \ln |x| + C$
+\end{itemize}
+
+\begin{quote}
+    \textbf{The constant is important:} let's consider $\int x^{-1} dx$.
+    
+    \begin{equation*}
+    \begin{split}
+        \int x^{-1} dx
+        &= -\int x (-x^{-2}) dx + 1 (u = x^-1, v = x, du = -x^{-2} dx)\\
+        &= \int x^{-1} dx + 1
+    \end{split}
+    \end{equation*}
+    
+    Where is the mistake?
+\end{quote}
+
+Some problems to solve:
+
+\begin{enumerate}
+    \item $I_n = \int x^n e^x dx$ (easy)
+    \item $\int \cos x e^x dx$ (difficult)
+\end{enumerate}
+
+By using \textbf{reduction formula}, we have
+\begin{equation*}
+\begin{split}
+    I_n &= \int x^n d(e^x)\\
+        &= -\int e^x d(x^n) + x^n e^x\\
+        &= -n \int x^{n-1} e^x + x^n e^x\\
+        &= -nI_{n-1} + x^n e^x
+\end{split}
+\end{equation*}
+
+\begin{equation*}
+\begin{split}
+    \int e^x \cos x dx
+    &= e^x \cos x + \int e^x \sin x dx\\
+    &= e^x \cos x + e^x \sin x - \int e^x \cos x dx
+\end{split}
+\end{equation*}
+
+Hence $$ \int e^x \cos x dx = \frac{1}{2} e^x (\sin x + \cos x) + C $$
+
+\begin{quote}
+    \textbf{Problem to think:}
+    
+    Given $ I_n = \int_0^\frac{\pi}{2} \sin^n x dx $. Find reduction formula of $I_n$ and show $\lim_{n \to \infty} I_n = 0$.
+\end{quote}

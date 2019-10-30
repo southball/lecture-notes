@@ -1,0 +1,52 @@
+\subsection{Malthus Population Model}
+
+We have a population model based on the differential equation
+
+$$ \frac{dP}{dt} = kP $$
+$$ \int \frac{dP}{P} = \int k dt $$
+$$ P = Ce^{kt} $$
+
+But the model is too idealistic so we modify the differential equation to become
+
+$$ \frac{dP}{dt} = kP(1 - \frac{P}{K}) $$
+
+where $K$ is the maximum population. This equation is also separable.
+
+We can prove that $P$ converges to $K$.
+
+This can also be generalized to a predator-prey model, for example
+
+$$ \frac{dx}{dt} = f_x(x, y) = k_1 x (x-y) $$
+$$ \frac{dy}{dt} = f_y(x, y) = k_2 x (x+y) $$
+
+\subsection{Partial Fraction}
+
+To solve the equation $ \frac{dP}{dt} = kP(\frac{K-P}{K}) $ or similar differential equations, we solve $ \frac{dP}{P(K-P)} = \int k dt $ instead using partial fraction method.
+
+For simplicity let $K = 1$.
+
+Our target is to resolve the left hand side to some integral similar to $\int{dP}{P}$.
+
+We recall that it is possible to decompose a fraction like $\frac{1}{6}$ by doing the following:
+
+$$ \frac{1}{6} = \frac{1}{2 \cdot 3} = \frac{1}{2} - \frac{1}{3} $$
+
+and the `dictionary` integer $\longleftrightarrow$ polynomial and rational number $\longleftrightarrow$ rational function.
+
+For exmaple, let us try to decompose $\frac{1}{x^2+3x+2}$. As $\frac{1}{x^2+3x+2}=\frac{1}{(x+1)(x+2)}$, we have
+
+$$ \frac{1}{x^2+3x+2} = \frac{A}{x+1}+\frac{B}{x+2} $$
+
+where $A, B$ are rational numbers. We can then solve the identity
+
+$$ 1 \equiv A(x+2) + B(x+1) $$
+
+to find the coefficients, and obtain the final equation
+
+$$ \frac{1}{x^2+3x+2} = \frac{1}{x+1} - \frac{1}{x+2} $$
+
+Integrating both sides, we have
+
+$$ \int \frac{1}{x^2+3x+2} dx = \ln |x+1| - \ln |x+2| $$
+
+\textbf{Problem:} how do we integrate functions like $\frac{x + 1}{x^2 + x + 1}$?
