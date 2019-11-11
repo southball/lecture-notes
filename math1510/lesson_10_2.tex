@@ -1,0 +1,216 @@
+\subsection{Integration by Rationalization}
+
+\textbf{Problem:} Evaluate $\int \frac{\sqrt{x+1}}{x} dx$.
+
+\textbf{Solution:} Let $u = \sqrt{x + 1}$.
+
+Then $u^2 = x + 1 \implies 2u du = dx$.
+
+\begin{equation*}
+\begin{split}
+    \int \frac{\sqrt{x + 1}}{x}
+    &= \int \frac{u}{u^2 - 1} \cdot 2u du\\
+    &= \int \frac{2}{u^2 - 1} du
+\end{split}
+\end{equation*}
+
+Which is a rational function.
+
+This can also be used to solve integration problems like $\int \sqrt{\frac{ax + b}{cx + d}} dx$.
+
+\section{Riemann Sum}
+
+\subsection{Introduction}
+
+\textbf{Goal:} To compute the `area' (signed area) `under' the curve $y = f(x)$, for $a \leq x \leq b$.
+
+\textbf{Idea:} To copy the idea of Archimedes of calculating area of circle. To do this, put `suitable' rectangles under the curve to approximate the area, and increase the number of rectangles so the sum of area of rectangles gets close to the area under the curve.
+
+There are several ways to choose the rectangles. For example, the \textbf{lower sum} can be used.
+
+\subsection{An Example of Riemann Sum}
+
+Consider the curve $y = x$, and $-1 \leq x \leq 1$. Let $n = 4$. Then
+
+$$ x_0 = -1, x_1 = -0.5, x_2 = 0, x_3 = 0.5, x_4 = 1 $$
+
+is one method of choosing $x$.
+
+Using \textbf{lower sum}, we have
+
+\begin{equation*}
+\begin{split}
+    \textbf{Area}
+    &= (-1) \cdot 0.5 + (-0.5) \cdot 0.5 + 0 \cdot 0.5 + 0.5 \cdot 0.5\\
+    &= -0.5
+\end{split}
+\end{equation*}
+
+Using \textbf{midpoint sum}, we have
+
+\begin{equation*}
+\begin{split}
+    \textbf{Area}
+    &= (-0.75) \cdot 0.5 + (-0.25) \cdot 0.5 + 0.25 \cdot 0.5 + 0.75 \cdot 0.5\\
+    &= 0
+\end{split}
+\end{equation*}
+
+The area under the curve can be approximated as follows:
+
+$$ \int_{x=a}^{x=b} f(x) dx = \lim_{n\to\infty} \sum_{i=1}^n f(\xi_i) \cdot (x_i - x_{i-1}) = \lim_{n\to\infty} \sum_{i=1}^n f(\xi_i) \Delta x_i $$
+
+where $\xi_i \in [x_{i-1}, x_i]$. Then it can be proved that any $\xi_i$ can be chosen without affecting the limit.
+
+\subsection{Condition for Integrable Functions}
+
+\begin{enumerate}
+    \item The subdivision of $[a, b]$ into $n$ subintervals $[x_0, x_1], [x_1, x_2], \dots, [x_{n-1}, x_n]$ must satisfy the condition that $|\Delta x_i| \to 0$ as $n \to \infty$.
+    
+    \textbf{Why?} In order to avoid the situation like ($a = 0, b = 1$) $x_0 = 0, x_i = \frac{1}{2^i}$ for $i > 0$.
+    
+    \item $f(x)$ needs to be a continuous function on $[a, b]$.
+\end{enumerate}
+
+If condition 1 and 2 are satisfied, then it can be proved (using epsilon-delta definition) that $\lim_{n\to\infty} \sum_{i=1}^n f(\xi_i) \Delta x_i$ exists (and is finite), and is defined as the area under the curve.
+
+This limit is denoted (given the notation) $\int_a^b f(x) dx$.
+
+\subsection{Rough Idea of Proof}
+
+Bound (control, find the upper and lower limit) $f(\xi_i)$ from above and below. 
+
+\textrightarrow\ find $m_i, M_i$ such that $m_i \leq f(\xi_i) \leq M_i$. $m_i$ and $M_i$ are the \textbf{absolute minimum} and \textbf{absolute maximum} of $f(x)$ in $[x_{i-1}, x_i]$ respectively.
+
+\begin{quote}
+    As we are consider the \textbf{closed} interval $[x_{i-1}, x_i]$, the absolute minimum and maximum must exist.
+\end{quote}
+
+Therefore $m_i \Delta x_i \leq f(\xi_i) \Delta x_i \leq M_i \Delta x_i$.
+
+\begin{quote}
+    We wish that as $n \to \infty$, $\lim \sum_{i=1}^n m_i \Delta x_i = \lim \sum_{i=1}^n M_i \Delta x_i$.
+
+    Then by sandwich theorem,
+    
+    $$ \lim_{n\to\infty} \sum_{i=1}^n m_i \Delta x_i = \lim_{n\to\infty} \sum_{i=1}^n f(\xi_i) \Delta x_i = \lim_{n\to\infty} \sum_{i=1}^n M_i \Delta x_i $$
+    
+    and it doesn't matter how we choose $\xi_i$ as long as $\xi_i \in [x_{i-1}, x_i]$.
+\end{quote}
+
+$\lim_{n\to\infty} \sum_{i=1}^n m_i \Delta x_i$ is named the \textbf{lower sum} and $\lim_{n\to\infty} \sum_{i=1}^n M_i \Delta x_i$ is denoted the \textbf{upper sum}. They are also called the \textbf{Darboux sums}.
+
+Instead of finding out the upper sum / the lower sum, we estimate $\sum_{i=1}^n (M_i - m_i) \Delta x_i$.
+
+\begin{quote}
+    $M_i - m_i$ measures the `change' of $f(x)$ when $x_{i-1} \leq x \leq x_i$.
+    
+    If $f$ is continuous, it can be proved that $M_i - m_i$ can be made arbitrary small.
+\end{quote}
+
+\textbf{Applications:} this can be used to find the normal distribution table.
+
+\subsection{Another Example of Riemann Sum}
+
+Consider the function $y = f(x) = x$.
+
+\textbf{Step 1:} let $x_0 = 0, x_1 = \frac{1}{n}, \dots, x_i = \frac{i}{n}, x_n = 1$.\\
+This way of partitioning $[a, b]$ is called \textbf{equipartition}.
+
+\textbf{Step 2:} $\Delta x_i = x_i - x_{i - 1} = \frac{i}{n} - \frac{i - 1}{n} = \frac{1}{n}$.
+
+\textbf{Step 3:} We will choose the upper sum for this problem.
+
+\begin{equation*}
+\begin{split}
+    \text{Upper sum}
+    &= U_n\\
+    &= \sum_{i=1}^n \frac{1}{n} \cdot {i}{n}\\
+    &= \frac{1}{n^2} \sum_{i=1}^n i\\
+    &= \frac{1}{n^2} \cdot \frac{n(n+1)}{2}\\
+    &= \frac{n + 1}{2n}\\
+    &= \frac{1}{2} (1 + \frac{1}{n})
+\end{split}
+\end{equation*}
+
+\textbf{Step 4:} 
+$$\lim_{n\to\infty} U_n = \frac{1}{2} = \int_0^1 x dx = \left[\frac{x^2}{2}\right]_0^1 $$
+
+\textbf{Remark:} if $f(x) = x^\alpha$ for $\alpha > 1$, then equipartition does not work well.
+
+\textbf{Note:} Mathematician \textit{Otto Toeplitz}'s approach of calculus. 
+
+\section{Fundamental Theorem of Calculus}
+
+\subsection{An Example}
+
+Consider the problem
+
+$$ \int_0^1 x dx $$
+
+First, we find $\int x dx = \frac{x^2}{2} + C$.\\
+Then, let $F(x) := \frac{x^2}{2} + C$.\\
+Finally, compute $F(1) - F(0) = \int_0^1 x dx$.
+
+How do we prove that this is correct?
+
+Consider $f(x): [a, b] \to \mathbb{R}$, and let $x \in (a, b)$. Then we notice that the area of the curve $y = f(x)$ between $x$ and $x + \Delta x \approx f(x) \cdot \Delta x$.
+
+But the area of the small rectangle is also equal to $\int_a^{x+\Delta x} f(t) dt - \int_a^x f(t) dt$, which is equal to $\int_x^{x+\Delta x} f(t) dt$.
+
+\begin{quote}
+    Or, by algebra,
+    \begin{equation*}
+    \begin{split}
+        & \int_a^{x + \Delta x} f(t) dt - \int_a^x f(t) dt\\
+        =& \int_a^{x + \Delta x} f(t) dt + \int_x^a f(t) dt\\
+        =& \int_x^{x + \Delta x} f(t) dt
+    \end{split}
+    \end{equation*}
+\end{quote}
+
+where we have used
+
+\begin{enumerate}
+    \item $\int_a^b f(x) dx = -\int_b^a f(x) dx$ (from area of rectangle)
+    \item $\int_a^b f(x) dx = \int_a^c f(x) dx + \int_c^b f(x)dx$
+\end{enumerate}
+
+But then because $\int_a^{x+\Delta x} f(t) dt = G(x + \Delta x)$, and $\int_a^x f(t) dt = G(x)$, where $G(x) := \int_a^x f(t) dt$,\\
+so $\int_a^{x + \Delta x} f(t) dt - \int_a^x f(t) dt = G(x + \Delta x) - G(x)$.
+
+Dividing $\Delta x$ from both sides, we have
+
+$$ \frac{1}{\Delta x} \int_x^{x+\Delta x} f(t) dt \approx \frac{f(x) \Delta x}{\Delta x} = f(x) $$
+
+Also
+
+$$ \lim_{\Delta x \to 0} \frac{G(x + \Delta x) - G(x)}{\Delta x} \approx f(x) $$
+
+We can use the \textbf{Integral Mean Value Theorem} to prove the two statements above more formally.
+
+\begin{quote}
+    The \textbf{Integral Mean Value Theorem} states that if $f$ is continuous in $[a, b]$, then there exists $\xi$ in $[a, b]$ such that
+    
+    $$ \int_a^b f(x) dx = f(\xi) (b - a) $$
+    
+    or, equivalently,
+    
+    $$ f(\xi) = \frac{1}{b - a} \int_a^b f(x) dx $$
+\end{quote}
+
+Using this theorem, we have
+
+$$ \int_x^{x + \Delta x} f(t) dt = f(\xi) \cdot \Delta x $$
+
+for some $\xi \in [x, x + \Delta x]$. Then,
+
+$$ \lim_{\Delta x \to 0} \frac{\int_x^{x+\Delta x} f(t) dt}{\Delta x} = \lim_{\Delta x \to 0} f(\xi) $$
+
+As $x \leq \xi \leq x + \Delta x$, by sandwich theorem, $\xi \to x$.
+
+\textbf{Remark:} $\int_a^b x dx$
+
+\textbf{Step 1:} $\int x dx = \frac{x^2}{2} + C$, i.e. find $G(x)$ such that $G'(x) = x$.
+
+\textbf{Step 2:} If we can find the function $G(x)$, then $\int_a^b x dx = G(b) - G(a)$.

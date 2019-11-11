@@ -1,0 +1,98 @@
+\subsection{Integration Problem Examples}
+
+\begin{equation*}
+\begin{split}
+    \int 3x^2 \arctan (x^3) dx
+    &= \int \arctan (x^3) d(x^3)\\
+    &= x^3 \arctan (x^3) - \int x^3 \cdot \frac{3x^2}{1 + x^3} dx
+\end{split}
+\end{equation*}
+
+\subsection{Half Angle t-Substitution}
+
+How do we evaluate the following integral?
+
+$$ \int \frac{1}{1 - \sin x + \cos x} dx $$
+
+Or, actually, any rational functions of $\sin x$ and $\cos x$ like $\frac{\sin x - 3 \cos x}{2 \sin x + 5 \cos x + 1}$?
+
+We can use the technique t-substitution, but letting $t = \tan \frac{x}{2}$. Then we can express $\sin x, \cos x$ and $dx$ in terms of $t$.
+
+\begin{flalign*}
+\begin{split}
+    \sin {x} 
+    &= 2 \sin \frac{x}{2} \cos \frac{x}{3}\\
+    &= 2 \cdot \frac{t}{\sqrt{1 + t^2}} \cdot \frac{1}{\sqrt{1 + t^2}}\\
+    &= \frac{2t}{1 + t^2}
+\end{split}&&
+\end{flalign*}
+
+\begin{flalign*}
+\begin{split}
+    \cos {x}
+    &= \cos^2 {x} - \sin^2 {x}\\
+    &= (\frac{1}{\sqrt{1 + t^2}})^2 - (\frac{t}{\sqrt{1 + t^2}})^2\\
+    &= \frac{1 - t^2}{1 + t^2}
+\end{split}&&
+\end{flalign*}
+
+\begin{flalign*}
+\begin{split}
+    dt
+    &= d(\tan \frac{x}{2})\\
+    &= \frac{1}{2} \sec^2 \frac{x}{2} dx\\
+    &= \frac{1}{2} (1 + t^2) dx
+\end{split}&&
+\end{flalign*}
+
+\begin{flalign*}
+dx = \frac{2dt}{1 + t^2}&&
+\end{flalign*}
+
+Therefore
+
+\begin{flalign*}
+\begin{cases}
+    \sin x = \frac{2t}{1 + t^2}\\
+    \cos x = \frac{1 - t^2}{1 + t^2}\\
+    dx = \frac{2dt}{1 + t^2}
+\end{cases}&&
+\end{flalign*}
+
+\subsection{Trigonometric Substitution Revisited}
+
+Let us consider integrals of the form $\int_{x=-R}^{x=R} \sqrt{R^2 - x^2} dx$. Let us compute the integral, taking into the account the domain of the integrands (i.e. $\sqrt{R^2 - x^2}$).
+
+\textit{Note that the integrand must be continuous and the domain must be closed.}\\
+
+\hrule
+
+Let $x = R \sin \theta$.
+
+\begin{quote}
+    What is the domain of $\theta$?
+    
+    $$x = -R \implies R = R \sin \theta \implies \theta = -\frac{\pi}{2}$$
+    $$x = R \implies R = R \sin \theta \implies \theta = \frac{\pi}{2}$$
+    
+    In the two equations above, there are many solutions. The `branch' (domain, term from complex function theory) $[-\frac{pi}{2}, \frac{pi}{2}]$ was chosen.
+\end{quote}
+
+Then, $dx = R \sin \theta d\theta$.
+
+Finally,
+
+\begin{equation*}
+\begin{split}
+    \int_{-R}^R \sqrt{R^2 - x^2} dx
+    &= \int_{\theta = -\frac{pi}{2}}^{\theta = \frac{\pi}{2}} \sqrt{R^2 - R^2 \sin^2 \theta} \cdot R \cos \theta d\theta\\
+    &= \int_{\theta = -\frac{pi}{2}}^{\theta = \frac{\pi}{2}} |R \cos \theta| \cdot R \cos \theta d\theta\\
+    &= \int R^2 \cos^2 \theta\ (\text{for the branch } [-\frac{\pi}{2}, \frac{\pi}{2}] \text{, } \cos \theta \geq 0)
+\end{split}
+\end{equation*}
+
+Also, for the branch chosen, we have $\frac{d\sin\theta}{d\theta} \geq 0$ and $\cos\theta \geq 0$.
+
+\begin{quote}
+    Interestingly, the proof above is actually a circular proof. When we compute $dx$, we used the fact that $\frac{d\sin\theta}{d\theta} = \cos\theta$, which relies on the fact that $\lim_{h\to 0} \frac{\sin h}{h} = 1$, which is derived from the area of circle $A = \frac{1}{2}r^2\theta$.
+\end{quote}
